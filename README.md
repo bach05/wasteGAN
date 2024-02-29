@@ -1,5 +1,7 @@
 # wasteGAN
 
+*Repository still under construction. If you notice some issues, feel free to let us know.*
+
 # How to install
 
 ```

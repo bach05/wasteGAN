@@ -1,0 +1,168 @@
+##CUSTOMIZATIONS
+##############################
+use_imcLoss: True
+use_sharpFeat: False
+use_adaCustom: False
+use_advCustom: False
+use_symLogAct: False
+symLogAct_a: 2
+use_genXL: False
+use_clsBal: True
+use_PatchDisc: True
+
+use_genFeat: False
+
+real_size: 100
+
+train_id: maskGAN_dualD_Drgb_res512 #maskGAN_dualD_Drgb_SymLoga3_L1pim_ema997_featG_SS
+
+
+## TRAINING PARAMS
+###########################
+
+# Batch size
+batch_size: 8
+#number of workers for the dataloader
+workers: 8
+# Dimensionality of $z$ and $w$
+d_latent: 512
+# Height/width of the image
+image_size: 256
+# Number of layers in the mapping network
+mapping_network_layers: 8
+# Generator & Discriminator learning rate
+gen_learning_rate: 1.0e-4
+dis_learning_rate_rgb: 1.0e-4 #1.0e-5
+dis_learning_rate_seg: 1.0e-4
+# Mapping network learning rate ($100 \times$ lower than the others)
+mapping_network_learning_rate: 1.0e-6
+# Number of steps to accumulate gradients on. Use this to increase the effective batch size.
+gradient_accumulate_steps: 1
+# $\beta_1$ and $\beta_2$ for Adam optimizer
+adam_betas: [0.0, 0.99]
+# Probability of mixing styles
+style_mixing_prob: 0.9
+
+# Total number of training steps
+training_steps: 160000 #500000 #160000
+
+#pre-training (w/o masks)
+mse_loss_w: 0.3
+perc_loss_w: 0.7
+
+#adversarial loss weight
+adv_loss_w: 1.0
+#feat l1 loss
+feat_loss_w: 0.0 #0.5 #5.0 #0.0
+#weight for class balance loss
+clsB_loss_w: 1.0
+#seg and RGB weigths
+rgb_w: 0.5
+seg_w: 0.5
+#coup_loss_w: 5.0
+s_loss_w: 10.0 #10.0 #sharp loss
+r_loss_w: 259 #259 #0.5 joint o 20 pimg|mask, 250 for l1loss pim, 1000 l1loss pj #reconstruction loss weight
+distribution: pImg|Mask #pJoint pImg|Mask
+
+#use adaptive discriminator adaptation
+use_ada: False
+use_gp: False
+
+# PRETRAINING 
+######################################À
+#pre training generator with mse+percpetual loss
+pretrain_gen: False
+ptg_epochs: 25
+ptg_load: False
+
+#CONDITIONAL GAN
+########################
+useCond: False
+d_img_space: 576
+patch_path: ./synthetic_clutters/rgb
+
+
+
+# REGULARIZATION PARAM
+#####################################
+# ### Lazy regularization
+# Instead of calculating the regularization losses, the paper proposes lazy regularization
+# where the regularization terms are calculated once in a while.
+# This improves the training efficiency a lot.
+# The interval at which to compute gradient penalty
+lazy_gradient_penalty_interval: 8
+# Path length penalty calculation interval
+lazy_path_penalty_interval: 32
+# Gradient penalty coefficient $\gamma$
+gradient_penalty_coefficient: 10.0
+# Skip calculating path length penalty during the initial phase of training
+lazy_path_penalty_after: 5000
+
+# ADAPTIVE DATA AUGMENTATION (ADA) REGULATION
+#the desired accuracy for real sample classification by discriminato ( if acc > target_acc we suppose overfitting)
+target_acc: 0.5 
+#initial value of probability p to apply augmentations (0.0 = no augmentations)
+init_p: 0.01
+#it smooth the variation of p dividing the update value
+integration_steps: 4000 #500
+#update frequency of p 
+p_update_interval: 8
+
+#EMA
+####################
+useEMA: True
+alpha: 0.997
+
+
+# LOGGING PARAMS
+################################### 
+# How often to log losses
+log_generated_interval: 50
+# How often to log losses
+log_generated_images_interval: 150
+# How often to save model checkpoints
+save_checkpoint_interval: 16000 #50000 #16000
+# Whether to log model layer outputs
+log_layer_outputs: False
+
+#DATA LOADING
+#########################################À
+
+#DATA PATH
+#prefix: /mnt #given as command line argument if necessary
+hub_dir: torch_hub_dir
+image_path: dataSplit1000/train/data
+#patch_path: /home/alberto/ScoasseNet_venv/ScoasseNet/dataset/synt_clutters/rgb
+mask_path: dataSplit1000/train/sem_seg
+
+image_path_val: dataSplit1000/val/sem_seg
+#patch_path: /home/alberto/ScoasseNet_venv/ScoasseNet/dataset/synt_clutters/rgb
+mask_path_val:  dataSplit1000/val/sem_seg
+
+#SAVE PATH
+tensorboard_path: runs/styleGAN2-ada
+model_path: styleGAN2-ada_out_models
+
+num_classes: 5
+
+#MODEL LOADING
+######################################
+load_checkpoint: False
+check_point_step: 18370
+
+#load pretrained image generation models
+pretrained_init: False
+root: styleGAN2-ada_out_models/ada_reconloss10/step_44999
+pretrained_D: Discriminator_ckpt.pt
+pretrained_G: Generator_ckpt.pt
+pretrained_W: MappingNetwork_ckpt.pt
+
+#ASPECT PARAMS
+#########################
+n_row: 4
+
+#G REGULARIZE
+g_reg_every: 4
+path_batch_shrink: 2
+path_regularize: 2.0
+

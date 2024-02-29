@@ -1,0 +1,68 @@
+##CUSTOMIZATIONS
+##############################
+use_imcLoss: False
+use_sharpFeat: False
+use_adaCustom: False
+use_advCustom: False
+use_symLogAct: False
+symLogAct_a: 2
+use_genXL: False
+use_clsBal: True
+real_size: 100
+
+test_id: maskGAN_dualD_Drgb #<<<<<<< CHANGE! maskGAN_dualD_Drgb  maskGAN_dualD_Drgb_SymLoga3_L1pim_ema997_featG_SS
+
+## NETWORK PARAMS
+###########################
+
+# Batch size
+batch_size: 12
+#workers
+workers: 4
+# Dimensionality of $z$ and $w$
+d_latent: 512
+# Height/width of the image
+image_size: 256
+# Number of layers in the mapping network
+mapping_network_layers: 8
+# Probability of mixing styles
+style_mixing_prob: 0.9
+num_classes: 5  #<<<<<<< CHANGES WITH DATASET!
+
+#CONDITIONAL GAN
+########################
+useCond: False
+d_img_space: 576
+patch_path: synthetic_clutters/rgb
+
+# LOGGING PARAMS
+################################### 
+# How often to log losses
+log_generated_interval: 50
+# How often to log losses
+log_generated_images_interval: 150
+# How often to save model checkpoints
+save_checkpoint_interval: 5000
+# Whether to log model layer outputs
+log_layer_outputs: False
+
+#DATA  FOLDERDS
+#########################################À
+#SAVE PATH
+#test_id: maskGAN_dualD_Drgb-L1_pim_2_ema997_featG_SS/step_159999 #maskGAN_dualD_Drgb-L1_pim_2_ema997_R/step_154999 #buono
+#test_id: maskGAN_dualD_Drgb_GL3DL2_L1pim_ema997_featG_SS/step_154999 #model to be used
+#prefix: .
+#test_id: maskGAN_dualD_Drgb
+save_path: AugDatasets
+model_step: step_159999 #step_159999 step_499999
+dataset_size: 51000
+
+#load pretrained image generation models
+pretrained_init: True
+root: styleGAN2-ada_out_models
+pretrained_D: Discriminator_ckpt.pt
+pretrained_G: MaskGenerator_ckpt.pt
+pretrained_W: MappingNetwork_ckpt.pt
+pretrained_A: Adapter_ckpt.pt
+
+

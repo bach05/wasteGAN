@@ -1,5 +1,14 @@
 # wasteGAN
 
+THis repository refers to the work:
+
+**WasteGAN: Data Augmentation for Robotic Waste Sorting through
+Generative Adversarial Networks**
+
+Submitted to THE 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2024) 
+
+![wastegan_scheme](./media/model_scheme.png)
+
 *Repository still under construction. If you notice some issues, feel free to let us know.*
 
 # How to install

@@ -17,7 +17,7 @@ Generative Adversarial Networks**. If you use this code or part of it in your wo
 ```
 Accepted to the "2024 IEEE/RSJ International Conference on Intelligent Robots and Systems" (IROS 2024). 
 
-#WasteGAN Architcture
+## WasteGAN Architecture
 
 ![wastegan_scheme](./media/model_scheme.png)
 

@@ -1,11 +1,21 @@
 # wasteGAN
 
-THis repository refers to the work:
+THis repository refers to the work **WasteGAN: Data Augmentation for Robotic Waste Sorting through
+Generative Adversarial Networks**. If you use this code or part of it in your work, please cite: 
 
-**WasteGAN: Data Augmentation for Robotic Waste Sorting through
-Generative Adversarial Networks**
+```
+@misc{bacchin2024wastegandataaugmentationrobotic,
+      title={WasteGAN: Data Augmentation for Robotic Waste Sorting through Generative Adversarial Networks}, 
+      author={Alberto Bacchin and Leonardo Barcellona and Matteo Terreran and Stefano Ghidoni and Emanuele Menegatti and Takuya Kiyokawa},
+      year={2024},
+      eprint={2409.16999},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2409.16999}, 
+}
 
-Submitted to THE 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2024) 
+```
+Accepted to THE 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2024) 
 
 ![wastegan_scheme](./media/model_scheme.png)
 

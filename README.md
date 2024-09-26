@@ -1,6 +1,6 @@
-# wasteGAN
+# WasteGAN
 
-THis repository refers to the work **WasteGAN: Data Augmentation for Robotic Waste Sorting through
+This repository refers to the work **WasteGAN: Data Augmentation for Robotic Waste Sorting through
 Generative Adversarial Networks**. If you use this code or part of it in your work, please cite: 
 
 ```
@@ -15,7 +15,9 @@ Generative Adversarial Networks**. If you use this code or part of it in your wo
 }
 
 ```
-Accepted to THE 2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2024) 
+Accepted to the "2024 IEEE/RSJ International Conference on Intelligent Robots and Systems" (IROS 2024). 
+
+#WasteGAN Architcture
 
 ![wastegan_scheme](./media/model_scheme.png)
 

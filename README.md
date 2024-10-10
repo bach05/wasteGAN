@@ -2,8 +2,8 @@
 
 [[PREPRINT]](https://arxiv.org/abs/2409.16999)
 
-This repository refers to the work **WasteGAN: Data Augmentation for Robotic Waste Sorting through
-Generative Adversarial Networks**. If you use this code or part of it in your work, please cite: 
+This repository refers to the paper **"WasteGAN: Data Augmentation for Robotic Waste Sorting through
+Generative Adversarial Networks"**. If you use this code or part of it in your work, please cite: 
 
 ```
 @misc{bacchin2024wastegandataaugmentationrobotic,
